@@ -1,0 +1,34 @@
+[Eagle]
+Version="09 06 02"
+Platform="Windows"
+Globals="Globals"
+Desktop="Desktop"
+
+[Globals]
+AutoSaveProject=1
+UsedLibraryUrn="urn:adsk.eagle:library:229"
+UsedLibraryUrn="urn:adsk.eagle:library:334"
+UsedLibraryUrn="urn:adsk.eagle:library:11886498"
+UsedLibraryUrn="urn:adsk.eagle:library:33649221"
+UsedLibraryUrn="urn:adsk.eagle:library:14840319"
+UsedLibraryUrn="urn:adsk.eagle:library:513"
+UsedLibraryUrn="urn:adsk.eagle:library:510"
+UsedLibraryUrn="urn:adsk.eagle:library:532"
+UsedLibraryUrn="urn:adsk.eagle:library:530"
+UsedLibraryUrn="urn:adsk.eagle:library:16502351"
+UsedLibrary="C:/Users/bburto42/Downloads/L298N (1).lbr"
+UsedLibrary="C:/Users/bburto42/Documents/ECE 5780/HW1 Library/1546217-2/1546217-2.lbr"
+UsedLibrary="C:/Users/bburto42/Documents/ECE 5780/HW1 Library/C1206C104K5RAC7800 (1).lbr"
+UsedLibrary="C:/Users/bburto42/Documents/ECE 5780/HW1 Library/CON-SOCJ-2155 (1).lbr"
+UsedLibrary="C:/Users/bburto42/Documents/ECE 5780/HW1 Library/RC1206JR-0710KL (1).lbr"
+UsedLibrary="C:/Users/bburto42/Documents/ECE 5780/HW1 Library/RL1206FR-070R04L (1).lbr"
+UsedLibrary="C:/Users/bburto42/Documents/ECE 5780/HW1 Library/RS2AA_R3G (1).lbr"
+UsedLibrary="C:/Users/bburto42/Documents/ECE 5780/HW1 Library/68001-121HLF (1).lbr"
+
+[Win_1]
+Type="Control Panel"
+Number=0
+
+[Desktop]
+Screen="5760 1080"
+Window="Win_1"

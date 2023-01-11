@@ -1,0 +1,181 @@
+<!--This work is licensed under a Creative Commons Attribution-ShareAlike 4.0 International License (CC BY-SA) with Design Exception 1.0-->
+<eagle version="7.1.0">
+<drawing>
+<settings>
+<setting alwaysvectorfont="no"/>
+<setting verticaltext="up"/>
+</settings>
+<grid distance="0.1" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.01" altunitdist="inch" altunit="inch"/>
+<layers>
+<layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="16" name="Bottom" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="17" name="Pads" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="18" name="Vias" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="19" name="Unrouted" color="6" fill="1" visible="yes" active="yes"/>
+<layer number="20" name="Dimension" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="21" name="tPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="22" name="bPlace" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="23" name="tOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="24" name="bOrigins" color="15" fill="1" visible="yes" active="yes"/>
+<layer number="25" name="tNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="26" name="bNames" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="27" name="tValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="29" name="tStop" color="7" fill="3" visible="yes" active="yes"/>
+<layer number="30" name="bStop" color="7" fill="6" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
+<layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
+<layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
+<layer number="42" name="bRestrict" color="1" fill="10" visible="yes" active="yes"/>
+<layer number="43" name="vRestrict" color="2" fill="10" visible="yes" active="yes"/>
+<layer number="44" name="Drills" color="7" fill="1" visible="no" active="yes"/>
+<layer number="45" name="Holes" color="7" fill="1" visible="no" active="yes"/>
+<layer number="46" name="Milling" color="3" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="90" name="Modules" color="5" fill="1" visible="yes" active="yes"/>
+<layer number="91" name="Nets" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="92" name="Busses" color="1" fill="1" visible="yes" active="yes"/>
+<layer number="93" name="Pins" color="2" fill="1" visible="yes" active="yes"/>
+<layer number="94" name="Symbols" color="4" fill="1" visible="yes" active="yes"/>
+<layer number="95" name="Names" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="96" name="Values" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="97" name="Info" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="98" name="Guide" color="6" fill="1" visible="yes" active="yes"/>
+</layers>
+<library>
+<packages>
+<package name="HDRV21W67P0X254_1X21_5334X241X">
+<description>&lt;b&gt;68001-121HLF&lt;/b&gt;&lt;br&gt;
+</description>
+<text x="0" y="0" size="1.27" layer="25" align="center">&gt;NAME</text>
+<text x="0" y="0" size="1.27" layer="27" align="center">&gt;VALUE</text>
+<wire x1="-1.52" y1="-1.455" x2="-1.52" y2="1.455" width="0.05" layer="51"/>
+<wire x1="-1.52" y1="1.455" x2="52.32" y2="1.455" width="0.05" layer="51"/>
+<wire x1="52.32" y1="1.455" x2="52.32" y2="-1.455" width="0.05" layer="51"/>
+<wire x1="52.32" y1="-1.455" x2="-1.52" y2="-1.455" width="0.05" layer="51"/>
+<wire x1="-1.27" y1="-1.205" x2="-1.27" y2="1.205" width="0.1" layer="51"/>
+<wire x1="-1.27" y1="1.205" x2="52.07" y2="1.205" width="0.1" layer="51"/>
+<wire x1="52.07" y1="1.205" x2="52.07" y2="-1.205" width="0.1" layer="51"/>
+<wire x1="52.07" y1="-1.205" x2="-1.27" y2="-1.205" width="0.1" layer="51"/>
+<wire x1="-1.27" y1="0" x2="-1.27" y2="-1.205" width="0.2" layer="21"/>
+<wire x1="-1.27" y1="-1.205" x2="52.07" y2="-1.205" width="0.2" layer="21"/>
+<wire x1="52.07" y1="-1.205" x2="52.07" y2="1.205" width="0.2" layer="21"/>
+<wire x1="52.07" y1="1.205" x2="0" y2="1.205" width="0.2" layer="21"/>
+<pad name="1" x="0" y="0" drill="1.15" diameter="1.725" shape="square"/>
+<pad name="2" x="2.54" y="0" drill="1.15" diameter="1.725"/>
+<pad name="3" x="5.08" y="0" drill="1.15" diameter="1.725"/>
+<pad name="4" x="7.62" y="0" drill="1.15" diameter="1.725"/>
+<pad name="5" x="10.16" y="0" drill="1.15" diameter="1.725"/>
+<pad name="6" x="12.7" y="0" drill="1.15" diameter="1.725"/>
+<pad name="7" x="15.24" y="0" drill="1.15" diameter="1.725"/>
+<pad name="8" x="17.78" y="0" drill="1.15" diameter="1.725"/>
+<pad name="9" x="20.32" y="0" drill="1.15" diameter="1.725"/>
+<pad name="10" x="22.86" y="0" drill="1.15" diameter="1.725"/>
+<pad name="11" x="25.4" y="0" drill="1.15" diameter="1.725"/>
+<pad name="12" x="27.94" y="0" drill="1.15" diameter="1.725"/>
+<pad name="13" x="30.48" y="0" drill="1.15" diameter="1.725"/>
+<pad name="14" x="33.02" y="0" drill="1.15" diameter="1.725"/>
+<pad name="15" x="35.56" y="0" drill="1.15" diameter="1.725"/>
+<pad name="16" x="38.1" y="0" drill="1.15" diameter="1.725"/>
+<pad name="17" x="40.64" y="0" drill="1.15" diameter="1.725"/>
+<pad name="18" x="43.18" y="0" drill="1.15" diameter="1.725"/>
+<pad name="19" x="45.72" y="0" drill="1.15" diameter="1.725"/>
+<pad name="20" x="48.26" y="0" drill="1.15" diameter="1.725"/>
+<pad name="21" x="50.8" y="0" drill="1.15" diameter="1.725"/>
+</package>
+</packages>
+<symbols>
+<symbol name="68001-121HLF">
+<wire x1="5.08" y1="2.54" x2="15.24" y2="2.54" width="0.254" layer="94"/>
+<wire x1="15.24" y1="-53.34" x2="15.24" y2="2.54" width="0.254" layer="94"/>
+<wire x1="15.24" y1="-53.34" x2="5.08" y2="-53.34" width="0.254" layer="94"/>
+<wire x1="5.08" y1="2.54" x2="5.08" y2="-53.34" width="0.254" layer="94"/>
+<text x="16.51" y="7.62" size="1.778" layer="95" align="center-left">&gt;NAME</text>
+<text x="16.51" y="5.08" size="1.778" layer="96" align="center-left">&gt;VALUE</text>
+<pin name="1" x="0" y="0" length="middle"/>
+<pin name="2" x="0" y="-2.54" length="middle"/>
+<pin name="3" x="0" y="-5.08" length="middle"/>
+<pin name="4" x="0" y="-7.62" length="middle"/>
+<pin name="5" x="0" y="-10.16" length="middle"/>
+<pin name="6" x="0" y="-12.7" length="middle"/>
+<pin name="7" x="0" y="-15.24" length="middle"/>
+<pin name="8" x="0" y="-17.78" length="middle"/>
+<pin name="9" x="0" y="-20.32" length="middle"/>
+<pin name="10" x="0" y="-22.86" length="middle"/>
+<pin name="11" x="0" y="-25.4" length="middle"/>
+<pin name="12" x="0" y="-27.94" length="middle"/>
+<pin name="13" x="0" y="-30.48" length="middle"/>
+<pin name="14" x="0" y="-33.02" length="middle"/>
+<pin name="15" x="0" y="-35.56" length="middle"/>
+<pin name="16" x="0" y="-38.1" length="middle"/>
+<pin name="17" x="0" y="-40.64" length="middle"/>
+<pin name="18" x="0" y="-43.18" length="middle"/>
+<pin name="19" x="0" y="-45.72" length="middle"/>
+<pin name="20" x="0" y="-48.26" length="middle"/>
+<pin name="21" x="0" y="-50.8" length="middle"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="68001-121HLF" prefix="J">
+<description>&lt;b&gt;Headers &amp; Wire Housings 21P SR UNSHRD HRD .76 GOLD OVER NI&lt;/b&gt;&lt;p&gt;
+Source: &lt;a href=""&gt; Datasheet &lt;/a&gt;  &lt;a href="https://pricing.snapeda.com/parts/68001-121HLF/Amphenol%20ICC/view-part?ref=eda"&gt;Check availability&lt;/a&gt;</description>
+<gates>
+<gate name="G$1" symbol="68001-121HLF" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="HDRV21W67P0X254_1X21_5334X241X">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+<connect gate="G$1" pin="3" pad="3"/>
+<connect gate="G$1" pin="4" pad="4"/>
+<connect gate="G$1" pin="5" pad="5"/>
+<connect gate="G$1" pin="6" pad="6"/>
+<connect gate="G$1" pin="7" pad="7"/>
+<connect gate="G$1" pin="8" pad="8"/>
+<connect gate="G$1" pin="9" pad="9"/>
+<connect gate="G$1" pin="10" pad="10"/>
+<connect gate="G$1" pin="11" pad="11"/>
+<connect gate="G$1" pin="12" pad="12"/>
+<connect gate="G$1" pin="13" pad="13"/>
+<connect gate="G$1" pin="14" pad="14"/>
+<connect gate="G$1" pin="15" pad="15"/>
+<connect gate="G$1" pin="16" pad="16"/>
+<connect gate="G$1" pin="17" pad="17"/>
+<connect gate="G$1" pin="18" pad="18"/>
+<connect gate="G$1" pin="19" pad="19"/>
+<connect gate="G$1" pin="20" pad="20"/>
+<connect gate="G$1" pin="21" pad="21"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="MF" value="Amphenol ICC"/>
+<attribute name="Purchase-URL" value="https://pricing.snapeda.com/search/part/68001-121HLF/?ref=eda"/>
+<attribute name="Description" value="
+BergStik®, Board to Board connector, Unshrouded vertical header, Through Hole, Single Row, , 21 Positions, 2.54 mm (0.100in) Pitch.
+"/>
+<attribute name="Price" value="None"/>
+<attribute name="MP" value="68001-121HLF"/>
+<attribute name="Availability" value="In Stock"/>
+<attribute name="Package" value="None"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
+</drawing>
+</eagle>
