@@ -1,0 +1,15 @@
+04/14/17
+Brian Burton
+Lisa Richardson
+
+Assignment #11 - Heaps
+
+The Heaps Project Summary:
+
+In assignment eleven, we were to build a heap using an array.
+
+Design Decisions: Followed the instructions given to the best of our ability.
+
+Problems Encountered and Their Solutions: Had a hard time with implementing each of the methods. We ran into a few issues
+										  when running our tests. Thankfully, we were able to fix those bugs using the 
+										  debugger. The largest problem that we faced in my opinion was the bubble down method.
