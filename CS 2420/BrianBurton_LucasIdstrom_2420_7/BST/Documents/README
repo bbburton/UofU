@@ -1,0 +1,15 @@
+03/02/17
+Brian Burton
+Lucas Idstrom
+Assignment #7 - BST
+
+Binary Search Tree Project Summary:
+
+In assignment seven, we were to implement a Binary Search Tree and then convert that to a sorted ArrayList. 
+We then implemented the Spell Checker class. This class allowed us to see if words were spelled correctly
+in a file. After this we implemented the timing code and compared our Binary Search Tree to Java's Tree.
+
+Design Decisions: Followed the instructions given to the best of our ability.
+
+Problems Encountered and Their Solutions: Had a hard time with the remove method. We also encountered a lot
+											of null pointer exceptions. 
