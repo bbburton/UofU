@@ -1,0 +1,20 @@
+02/23/17
+Brian Burton
+Melvin Bosnjak
+Assignment #6 - Linked Lists
+
+Short Project Summary:
+
+In assignment six, we were to implement a liked list and then convert that to an ArrayList. We then are to compare how long each of 
+them took to run through a lot of elements.
+
+Late Work: 	I have completed every part of this assignment except for my analisis document. The reason that I was unable to complete
+			the assignment on time is because I only have a limited number of hours that I can work on this homework. It is also
+			very hard for me to understand these concepts so it takes me longer. I plan to have my work done by Saturday if not sooner. 
+
+Notes to the TA: Thank you for your patients with me. I wish I was a more proficient programmer myself... Haha.
+
+Design Decisions: Followed the instructions given to the best of our ability.
+
+Problems Encountered and Their Solutions: Had a hard time with the recursive methods as well as any method having to do with the end
+										  of the list.
