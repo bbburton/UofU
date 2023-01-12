@@ -1,0 +1,269 @@
+{\rtf1\ansi\ansicpg1252\deff0\nouicompat\deflang1033{\fonttbl{\f0\fnil\fcharset0 Calibri;}}
+{\*\generator Riched20 10.0.19041}\viewkind4\uc1 
+\pard\sa200\sl276\slmult1\f0\fs22\lang9 /**\par
+  * @brief  The application entry point.\par
+  * @retval int\par
+  */\par
+int main(void)\par
+\{\par
+  /* USER CODE BEGIN 1 */\par
+\par
+  /* USER CODE END 1 */\par
+\par
+  /* MCU Configuration--------------------------------------------------------*/\par
+\par
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */\par
+  HAL_Init();\par
+\par
+  /* USER CODE BEGIN Init */\par
+\par
+  /* USER CODE END Init */\par
+\par
+  /* Configure the system clock */\par
+  SystemClock_Config();\par
+\par
+  /* USER CODE BEGIN SysInit */\par
+\par
+  /* USER CODE END SysInit */\par
+\tab\par
+\tab /* This example uses HAL library calls to control\par
+\tab\tab the GPIOC peripheral. You\rquote ll be redoing this code\par
+\tab\tab with hardware register access. */\par
+\tab\tab\par
+/*\par
+\tab //PART 1\par
+\tab\par
+\tab //STEP 1\par
+\tab //__HAL_RCC_GPIOC_CLK_ENABLE(); // Enable the GPIOC clock in the RCC\par
+\tab\par
+\tab //__IO uint32_t APB1ENR; // Enable the GPIOC clock in the RRC < RCC APB1 peripheral clock enable register,                   \par
+\tab //Address offset: 0x1C\par
+\par
+\par
+\tab //(1) Enable the peripheral clock of GPIOA, GPIOB and GPIOC\par
+\tab //RCC->AHBENR |= RCC_AHBENR_GPIOAEN | RCC_AHBENR_GPIOBEN | RCC_AHBENR_GPIOCEN;\par
+\tab RCC->AHBENR |= RCC_AHBENR_GPIOCEN;\par
+*/\par
+\tab\par
+\tab\par
+\par
+\tab //PART 2\par
+\tab\par
+\tab //STEP 1\par
+\tab RCC->AHBENR |= RCC_AHBENR_GPIOAEN;\par
+\tab RCC->AHBENR |= RCC_AHBENR_GPIOCEN;\par
+\tab\par
+/*\par
+\tab //PART 1\par
+\par
+\tab //STEP 2\par
+\tab // Set up a configuration struct to pass to the initialization function\par
+\tab //GPIO_InitTypeDef initStr = \{GPIO_PIN_8 | GPIO_PIN_9, GPIO_MODE_OUTPUT_PP, GPIO_SPEED_FREQ_LOW, GPIO_NOPULL\};\par
+\tab //HAL_GPIO_Init(GPIOC, &initStr); // Initialize pins PC8 & PC9\par
+\par
+\tab //Set the pins to general-purpose output mode in the MODER register.\par
+\tab //GPIOC->MODER |= (1<<16); //01: General purpose output mode. Pin PC8(Orange)(bits 17:16) as Output (01). This means that we need to write a \lquote 1\rquote  in the 16th position.\par
+\tab //GPIOC->MODER |= (1<<18); //Pin PC9(Green) (bits 19:18) as Output (01). This means that we need to write a '1' in the 18th position.\par
+\tab GPIOC->MODER |= (1<<12); //01: General purpose output mode. Pin PC6(Red)(bits 13:12) as Output (01). This means that we need to write a \lquote 1\rquote  in the 12th position.\par
+\tab GPIOC->MODER |= (1<<14); //Pin PC7(Blue) (bits 15:14) as Output (01). This means that we need to write a '1' in the 14th position.\par
+\tab\par
+\tab //Set the pins to push-pull output type in the OTYPER register.\par
+\tab //GPIOC->OTYPER &= ~(1<<8);  // bit 8=0 --> Output push pull. Pin PC8(Orange).\par
+\tab //GPIOC->OTYPER &= ~(1<<9);  // bit 9=0 --> Output push pull. Pin PC9(Green).\par
+\tab GPIOC->OTYPER &= ~(1<<6);  // bit 6=0 --> Output push pull. Pin PC6(Red).\par
+\tab GPIOC->OTYPER &= ~(1<<7);  // bit 7=0 --> Output push pull. Pin PC7(Blue).\par
+\tab\par
+\tab //Set the pins to low speed in the OSPEEDER register.\par
+\tab //GPIOC->OSPEEDR |= ((1<<16) | (1<<17)); //Pin PC8(Orange) (bits 17:16) as Low Speed (0:0).\par
+\tab //GPIOC->OSPEEDR |= ((1<<18) | (1<<19)); //Pin PC9(Green) (bits 19:18) as Low Speed (0:0).\par
+\tab  //Pin PC7(Blue) (bits 15:14) as Low Speed (0:0).\par
+\tab\par
+\tab //Set to no pull-up/down resistors in the PUPDR register.\par
+\tab //GPIOC->PUPDR &= ~((1<<16) | (1<<17));  // Pin PC8(Orange) (bits 17:16) are 0:0 --> no pull up or pulldown\par
+\tab //GPIOC->PUPDR &= ~((1<<18) | (1<<19));  // Pin PC9(Green) (bits 19:18) are 0:0 --> no pull up or pulldown\par
+\tab GPIOC->PUPDR &= ~((1<<12) | (1<<13));  // Pin PC6(Red) (bits 13:12) are 0:0 --> no pull up or pulldown\par
+\tab GPIOC->PUPDR &= ~((1<<14) | (1<<15));  // Pin PC7(Blue) (bits 15:14) are 0:0 --> no pull up or pulldown\par
+*/\par
+\par
+\par
+\tab //PART 2\par
+\par
+\tab //STEP 2\par
+\tab // Set up a configuration struct to pass to the initialization function\par
+\tab //GPIO_InitTypeDef initStr = \{GPIO_PIN_8 | GPIO_PIN_9, GPIO_MODE_OUTPUT_PP, GPIO_SPEED_FREQ_LOW, GPIO_NOPULL\};\par
+\tab //HAL_GPIO_Init(GPIOC, &initStr); // Initialize pins PC8 & PC9\par
+\par
+\tab //Set the pins to general-purpose output mode in the MODER register.\par
+\tab //GPIOC->MODER |= (1<<16); //01: General purpose output mode. Pin PC8(Orange)(bits 17:16) as Output (01). This means that we need to write a \lquote 1\rquote  in the 16th position.\par
+\tab //GPIOC->MODER |= (1<<18); //Pin PC9(Green) (bits 19:18) as Output (01). This means that we need to write a '1' in the 18th position.\par
+\tab GPIOC->MODER |= (1<<12); //01: General purpose output mode. Pin PC6(Red)(bits 13:12) as Output (01). This means that we need to write a \lquote 1\rquote  in the 12th position.\par
+\tab GPIOC->MODER |= (1<<14); //Pin PC7(Blue) (bits 15:14) as Output (01). This means that we need to write a '1' in the 14th position.\par
+\tab\par
+\tab //Set the pins to push-pull output type in the OTYPER register.\par
+\tab //GPIOC->OTYPER &= ~(1<<8);  // bit 8=0 --> Output push pull. Pin PC8(Orange).\par
+\tab //GPIOC->OTYPER &= ~(1<<9);  // bit 9=0 --> Output push pull. Pin PC9(Green).\par
+\tab GPIOC->OTYPER &= ~(1<<6);  // bit 6=0 --> Output push pull. Pin PC6(Red).\par
+\tab GPIOC->OTYPER &= ~(1<<7);  // bit 7=0 --> Output push pull. Pin PC7(Blue).\par
+\tab\par
+\tab //Set the pins to low speed in the OSPEEDER register.\par
+\tab //GPIOC->OSPEEDR |= ((1<<16) | (1<<17)); //Pin PC8(Orange) (bits 17:16) as Low Speed (0:0).\par
+\tab //GPIOC->OSPEEDR |= ((1<<18) | (1<<19)); //Pin PC9(Green) (bits 19:18) as Low Speed (0:0).\par
+\tab  //Pin PC7(Blue) (bits 15:14) as Low Speed (0:0).\par
+\tab\par
+\tab //Set to no pull-up/down resistors in the PUPDR register.\par
+\tab //GPIOC->PUPDR &= ~((1<<16) | (1<<17));  // Pin PC8(Orange) (bits 17:16) are 0:0 --> no pull up or pulldown\par
+\tab //GPIOC->PUPDR &= ~((1<<18) | (1<<19));  // Pin PC9(Green) (bits 19:18) are 0:0 --> no pull up or pulldown\par
+\tab GPIOC->PUPDR &= ~((1<<12) | (1<<13));  // Pin PC6(Red) (bits 13:12) are 0:0 --> no pull up or pulldown\par
+\tab GPIOC->PUPDR &= ~((1<<14) | (1<<15));  // Pin PC7(Blue) (bits 15:14) are 0:0 --> no pull up or pulldow\par
+\tab\par
+\tab //Enable the pull-down resistor in the PUPDR register.\par
+\tab GPIOA->PUPDR = 0x00100; // Button B1 (bits 1:0) are (1:0) --> enable pull-down.\par
+\tab\par
+\tab GPIOC->ODR = 0;\par
+\par
+/*\par
+\tab GPIO_InitTypeDef initStr = \{GPIO_PIN_8 | GPIO_PIN_9, GPIO_MODE_OUTPUT_PP, GPIO_SPEED_FREQ_LOW, GPIO_NOPULL\};\par
+\tab HAL_GPIO_Init(GPIOC, &initStr); // Initialize pins PC8 & PC9\par
+\tab\par
+\tab HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET); // Start PC8 high\par
+*/\par
+\par
+\par
+\tab //PART 1\par
+\tab\par
+\tab\par
+\tab //STEP 3\par
+\tab //HAL_GPIO_WritePin(GPIOC, GPIO_PIN_8, GPIO_PIN_SET); // Start PC8 high\par
+\tab\par
+\tab //GPIOC->BSRR |= (1<<8); // Set the Pin PC8. Turn LED ON. \par
+\tab //GPIOC->BSRR |= (1<<25); // Reset the Pin PC9. Turn LED OFF.\par
+\par
+\tab //GPIOC->ODR |= 1<<8; // Set the Pin PC8(Orange). Turn LED ON.\par
+\tab //GPIOC->ODR &= ~(1<<9); // Reset the Pin PC9(Green). Turn LED OFF.\par
+\tab GPIOC->ODR |= 1<<6; // Set the Pin PC6(Red). Turn LED ON.\par
+\tab GPIOC->ODR &= ~(1<<7); // Reset the Pin PC7(Blue). Turn LED OFF.\par
+\par
+\par
+\tab //GPIOC->ODR |= 1<<6; // Set the Pin PC6(Red). Turn LED ON.\par
+\tab //GPIOC->ODR &= ~(1<<7); // Reset the Pin PC7(Blue). Turn LED OFF.\par
+\par
+\par
+  /* Initialize all configured peripherals */\par
+  /* USER CODE BEGIN 2 */\par
+\par
+  /* USER CODE END 2 */\par
+\par
+  /* Infinite loop */\par
+  /* USER CODE BEGIN WHILE */\par
+\tab\par
+\tab uint32_t debouncer = 0;\par
+\tab int PastX = 0;\par
+\tab int X = 0;\par
+\tab\par
+  while (1)\par
+  \{\par
+\tab\tab\par
+\tab\tab\par
+\tab\tab PastX = X;\par
+\tab\tab X = GPIOA->IDR & 0x1;\par
+\tab\tab\par
+\tab\tab if((X==1) & (PastX==0)) \{\par
+\tab\tab\tab\par
+\tab\tab\tab GPIOC->ODR ^= (1<<6)|(1<<7);\par
+\tab\tab\}\par
+\tab\tab\par
+\tab\tab HAL_Delay(200); \par
+\tab\tab\par
+\tab\tab debouncer = (debouncer << 1); // Always shift every loop iteration\par
+\tab\tab if ( GPIOA->IDR & 1) \{ // If input signal is set/high\par
+\tab\tab\tab\par
+\tab\tab\tab //HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9);\par
+\tab\tab\par
+\tab\tab\tab debouncer |= 0x01; // Set lowest bit of bit-vector\par
+\tab\tab\}\par
+\tab\tab\par
+\tab\tab if (debouncer == 0xFFFFFFFF) \{\par
+\tab\tab // This code triggers repeatedly when button is steady high!\par
+\tab\tab\tab\par
+\tab\tab\tab GPIOC->ODR = 0;\par
+\tab\tab\}\par
+\tab\tab\par
+\tab\tab if (debouncer == 0x00000000) \{\par
+\tab\tab // This code triggers repeatedly when button is steady low!\par
+\tab\tab\tab\par
+\tab\tab\tab GPIOC->ODR = (1<<6) | (1<<7);\par
+\tab\tab\tab //HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9);\par
+\tab\tab\}\par
+\tab\tab\par
+\tab\tab if (debouncer == 0x7FFFFFFF) \{\par
+\tab\tab // This code triggers only once when transitioning to steady high!\par
+\tab\tab\tab\par
+\tab\tab\tab //GPIOC->ODR |= 1<<6; // Set the Pin PC6(Red). Turn LED ON.\par
+\tab\tab\tab //GPIOC->ODR &= ~(1<<7); // Reset the Pin PC7(Blue). Turn LED OFF.\par
+\tab\tab\tab //HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9);\par
+\tab\tab\}\par
+\tab\tab // When button is bouncing the bit-vector value is random since bits are set when the button is high and not when it bounces low.\par
+\tab\tab\par
+\tab\tab\par
+    /* USER CODE END WHILE */\par
+\par
+    /* USER CODE BEGIN 3 */\par
+\tab\tab\par
+/*\par
+\tab\tab //PART 1\par
+\tab\tab\par
+\tab\tab\par
+\tab\tab //STEP 4\par
+\tab\tab //HAL_Delay(200); //Delay 200ms\par
+\tab\tab // Toggle the output state of both PC8 and PC9\par
+\tab\tab //HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_8 | GPIO_PIN_9);\par
+\tab\tab\par
+\tab\tab //GPIOC->BSRR |= (1<<8); // Set the Pin PC8. Turn LED ON. \par
+\tab\tab //GPIOC->BSRR |= (1<<25); // Reset the Pin PC9. Turn LED OFF.\par
+\tab\tab\par
+\tab\tab //GPIOC->ODR |= 1<<8; // Set the Pin PC8(Orange). Turn LED ON.\par
+\tab\tab //GPIOC->ODR &= ~(1<<9); // Reset the Pin PC9(Green). Turn LED OFF.\par
+\tab\tab GPIOC->ODR |= 1<<6; // Set the Pin PC6(Red). Turn LED ON.\par
+\tab\tab GPIOC->ODR &= ~(1<<7); // Reset the Pin PC7(Blue). Turn LED OFF.\par
+\tab\tab\par
+\tab\tab HAL_Delay(200); // Delay 200ms\par
+\tab\tab\par
+\tab\tab //GPIOC->BSRR |= (1<<24); // Reset the Pin PC8. Turn LED OFF.\par
+\tab\tab //GPIOC->BSRR |= (1<<9); // Set the Pin PC9. Turn LED ON.\par
+\tab\tab\par
+\tab\tab //GPIOC->ODR &= ~(1<<8); // Reset the Pin PC8(Orange). Turn LED OFF.\par
+\tab\tab //GPIOC->ODR |= 1<<9; // Set the Pin PC9(Green). Turn LED ON.\par
+\tab\tab GPIOC->ODR &= ~(1<<6); // Reset the Pin PC6(Red). Turn LED OFF.\par
+\tab\tab GPIOC->ODR |= 1<<7; // Set the Pin PC7(Blue). Turn LED ON.\par
+\tab\tab\par
+\tab\tab HAL_Delay(200); // Delay 200ms\par
+*/\par
+\par
+\tab\tab //PART 2\par
+\tab\tab\par
+\tab\tab //STEP 4\par
+\tab\tab //Monitor the button pin input state within the endless program loop.\par
+\tab\tab //Use the IDR register.\par
+\par
+/*\par
+\tab\tab //Reading PA0 bit\par
+\tab\tab if( ( GPIOA->IDR & 0x01) == 0 ) \{\par
+\tab\tab\tab\par
+\tab\tab\tab //PORT A's 0th bit is 0\par
+\tab\tab\tab GPIOC->ODR |= 1<<6; // Set the Pin PC6(Red). Turn LED ON.\par
+\tab\tab\tab GPIOC->ODR &= ~(1<<7); // Reset the Pin PC7(Blue). Turn LED OFF.\par
+\tab\tab\tab\par
+\tab\tab\}\par
+\tab\tab else \{\par
+\tab\tab\tab\par
+\tab\tab\tab //PORT A's 0th bit is 1\par
+\tab\tab\tab GPIOC->ODR &= ~(1<<6); // Reset the Pin PC6(Red). Turn LED OFF.\par
+\tab\tab\tab GPIOC->ODR |= 1<<7; // Set the Pin PC7(Blue). Turn LED ON.\par
+\tab\tab\tab\par
+\tab\tab\}\par
+*/\par
+  \}\par
+  /* USER CODE END 3 */\par
+\}\par
+}
+ 
