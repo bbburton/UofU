@@ -1,0 +1,24 @@
+LUI 0, $32
+ORI 0, $27
+LUI 1, $03
+ORI 1, $00
+
+CMP 0, 1
+BNE 3
+LI 0, $0
+BUC 9
+
+STOR 0, 1
+
+ADDI 1, $01
+LOAD 3, 1
+SUBI 1, $01
+LOAD 4, 1
+
+SUB 0, 4
+BEQ $2
+MOV 0, 3
+
+LUI F, $FF
+ORI F, $FF
+JUC F
