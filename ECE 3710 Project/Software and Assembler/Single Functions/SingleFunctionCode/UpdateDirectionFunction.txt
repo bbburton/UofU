@@ -1,0 +1,75 @@
+// Load in the keysPressed register to register 14
+LDKEY 14
+// do initialization for the player 1 loop. 0 is the loop counter/direction
+// 1 is the bit used to mask to check the direction pressed. Starts at 1 
+// because first you will check if w is pressed to move up which is bit 0. 
+// Just Keeps doubling every iteration to form the new mask.
+MVI 0, $0
+MVI 1, $1
+// Move the loop counter into register 2
+MV 2, 0
+// Xor with the players direction
+XOR 2, 9
+// If the result of the XOR was 3 then it is not a
+// valid direction to move so just skip this direction 
+// check (equivalent of a continue)
+CMPI 2, $3
+// Jump to the loop incrementation and loop check
+BE $7
+// Move the keys pressed into register 2
+MV 2, 14
+// Get the bit you are interested in using the mask
+AND 2, 1
+// If the mask resulted in 0 the key is not pressed so just
+// continue the loop by jumping to the loop incrementation 
+// and loop check
+CMPI 2, $0
+BE $3
+// If you get to this point it is a valid direction and the
+// key is pressed so update Player1 to be moving that direction
+// and break out of the loop
+MV 9, 0
+BUC $5
+// Increment Loop counter and double the mask
+ADDI 0, $1
+ADD 1, 1
+// Check the looping condition stops once i = 4
+CMPI 0, 4
+BNE $243
+// do initialization for the player 2 loop. 0 is the loop counter/direction
+// 16 is the bit used to mask to check the direction pressed. Starts at 6 
+// because first you will check if up arrow is pressed to move up which is 
+// bit 4. Just Keeps doubling every iteration to form the new mask.
+MVI 0, $0
+MVI 1, $16
+// Move the loop counter into register 2
+MV 2, 0
+// Xor with the players direction
+XOR 2, 11
+// If the result of the XOR was 3 then it is not a
+// valid direction to move so just skip this direction 
+// check (equivalent of a continue)
+CMPI 2, $3
+// Jump to the loop incrementation and loop check
+BE $7
+// Move the keys pressed into register 2
+MV 2, 14
+// Get the bit you are interested in using the mask
+AND 2, 1
+// If the mask resulted in 0 the key is not pressed so just
+// continue the loop by jumping to the loop incrementation 
+// and loop check
+CMPI 2, $0
+BE $3
+// If you get to this point it is a valid direction and the
+// key is pressed so update Player1 to be moving that direction
+// and break out of the loop
+MV 11, 0
+BUC $5
+// Increment Loop counter and double the mask
+ADDI 0, $1
+ADD 1, 1
+// Check the looping condition stops once i = 4
+CMPI 0, 4
+BNE $243
+JUC wherever it needs to return to 

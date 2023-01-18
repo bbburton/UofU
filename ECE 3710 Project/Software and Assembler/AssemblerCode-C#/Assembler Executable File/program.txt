@@ -1,0 +1,439 @@
+// Register Definitions
+// 0-4 Temps
+// 5 19200
+// 6 160
+// 7 Return
+// 8 Player 1 Position
+// 9 Player 1 Direction
+// 10 Player 2 Position
+// 11 Player 2 Direction
+// 12 Reserved
+// 13 Reserved
+// 14 Keyboard Inputs
+// 15 E000
+
+// Memory Definitions
+// Position Array Start: 0xE000 (2400 length)
+// Cells per Word: 8
+// Cells per Line: 160
+// Total Lines: 120
+// Reserved Visual Memory (For future expansion and "Menu" Flags): 0xB000
+
+// Direction Codes (For direction registers)
+// 00 Up
+// 01 Left
+// 11 Down
+// 10 Right
+
+// State Codes (For Position Array)
+// 00 Unoccupied
+// 01 Player 1
+// 10 Player 2
+// 11 Reserved
+
+
+// Menu Loop (Game over Loop)
+// Memory Address 0x0000
+// Menu Loop to detect the space bar being pressed 
+// Read in the Keyboard input to reg 14
+LDKEY 14
+// Load in the correct mask bit to detect space bar press
+LUI $128, 0 
+// And the keys pressed with the mask to detect the press
+AND 0, 14
+// If the result is 0 the space bar is not pressed so begin 
+// the loop to detect the press again
+BEQ $253
+
+
+// Game Setup (Runs before game loop starts)
+// Memory Address 0x0004
+// Move in the address that contains the first memory matrix element to reg 15
+LUI $224, 15
+// Load maximum player position into reg 5
+LUI $75, 5
+// Load grid width (160) into reg 6
+MOVI $160, 6
+// Load the player one start position bottom middle left (19080) into reg 8
+LUI $74, 8
+ORI $136, 8
+// Start Player one moving up by moving 0 into reg 9
+MOVI $0, 9
+// Load the player two start position bottom middle right (19160) into reg 10
+LUI $74, 10
+ORI $216, 10
+// Start Player two moving up by moving 0 into reg 11
+MOVI $0, 11
+// Move the strating grid address in memory to reg 0
+MOV 0, 15
+// Move the one past the ending grid address in memory to reg 1
+MOV 1, 5
+RSHI $3, 1
+ADD 1, 0
+// Move 0 (the address to store at every grid) into reg 2
+MOVI $0, 2
+// STOR 0 into the memory address
+STOR 2, 0
+// Increment the memory address
+ADDI $1, 0
+// Keep looping and storing 0 until every matrix address has been assigned 0
+CMP 0, 1
+BNE $253
+// Load the player 1 marker (1) into the matrix at the players starting position
+// Starts at position (19080) which is bits 0, 1 of memory (startaddr + 2385)
+MOVI $1, 1
+LUI $9, 0
+ORI $81, 0
+ADD 0, 15
+STOR 1, 0
+// Load the player 2 marker (2) into the matrix at the players starting position
+// Starts at position (19160) which is bits 0, 1 of memory (startaddr + 2395)
+MOVI $2, 1
+LUI $9, 0
+ORI $91, 0
+ADD 0, 15
+STOR 1, 0
+// Update the flag that lets the VGA know to start drawing the game screen
+LUI $176, 0
+MOVI $0, 1
+STOR 1, 0
+
+// Game Loop (Runs during game)
+// Memory Address 0x0023
+// BEGIN DIRECTION GETTING SCRIPT
+// Load in the keysPressed register to register 14
+LDKEY 14
+
+// Jump checker for Player 1
+// Check if Player 1 is allowed to jump using a mask
+LUI $255, 0
+AND 0, 9
+CMPI $0, 0
+// If the result is 0 the player is allowed to jump so go to the code that detects a 
+// jump otherwise decrement the counters.
+BEQ $10
+LUI $1, 0
+SUB 9, 0
+// Check if the jumping counter is 0 if it is not decrement it
+MOVI $112, 0
+AND 0, 9
+CMPI $0, 0
+// If it is 0 the player is no longer jumping and jump to checker for player 2
+BEQ $3
+MOVI $16, 0
+SUB 9, 0
+// branch to the jump checker for player 2
+BUC $8
+// Check if Q is pressed (the player is trying to jump)
+LUI $16, 0
+AND 0, 14
+// If the result is 0 q is not pressed to branch to the jump checker for player 2
+// otherwise update player 1 to be jumping
+CMPI $0, 0
+BEQ $4
+// Set the counter for when the player can jump again to its maximum values (255 cycles) and
+// set the counter for how long the player is in the air to be its maximum value (7 cycles)
+LUI $255, 0
+ADDI $112, 0
+OR 9, 0
+// End Jump Checker for player 1
+
+// Jump Checker for player 2
+// Check if Player 2 is allowed to jump using a mask
+LUI $255, 0
+AND 0, 11
+CMPI $0, 0
+// If the result is 0 the player is allowed to jump so go to the code that detects a 
+// jump otherwise decrement the counters.
+BEQ $10
+LUI $1, 0
+SUB 11, 0
+// Check if the jumping counter is 0 if it is not decrement it
+MOVI $112, 0
+AND 0, 11
+CMPI $0, 0
+// If it is 0 the player is no longer jumping and jump to checker for player 2
+BEQ $3
+// Otherwise decrement the counter
+MOVI $16, 0
+SUB 11, 0
+// branch to the loop to updating the players directions
+BUC $8
+// Check if Enter is pressed (the player is trying to jump)
+LUI $32, 0
+AND 0, 14
+// If the result is 0 enter is not pressed so don't start a jump and start updating player directions
+CMPI $0, 0
+BEQ $4
+// Set the counter for when the player can jump again to its maximum values (255 cycles) and
+// set the counter for how long the player is in the air to be its maximum value (7 cycles)
+LUI $255, 0
+ADDI $112, 0
+OR 11, 0
+// End jump checker for player 2
+
+// Player 1 direction update
+// do initialization for the player 1 loop. 0 is the loop counter/direction
+// 1 is the bit used to mask to check the direction pressed. Starts at 1 
+// because first you will check if w is pressed to move up which is bit 0. 
+// Just Keeps doubling every iteration to form the new mask.
+MOVI $0, 0
+MOVI $1, 1
+// Move the loop counter into register 2
+MOV 2, 0
+// Xor with the players direction
+MOVI $3, 3
+AND 3, 9
+XOR 2, 3
+// If the result of the XOR was 3 then it is not a
+// valid direction to move so just skip this direction 
+// check (equivalent of a continue)
+CMPI $3, 2
+// Jump to the loop incrementation and loop check
+BEQ $10
+// Move the keys pressed into register 2
+MOV 2, 14
+// Get the bit you are interested in using the mask
+AND 2, 1
+// If the mask resulted in 0 the key is not pressed so just
+// continue the loop by jumping to the loop incrementation 
+// and loop check
+CMPI $0, 2
+BEQ $6
+// If you get to this point it is a valid direction and the
+// key is pressed so update Player1 to be moving that direction
+// and break out of the loop
+// Create a mask to remove the old direction
+LUI $255, 2
+ADDI $252, 2
+// And it to remove the old direction
+AND 9, 2
+// Or it to add the new direction
+OR 9, 0
+BUC $5
+// Increment Loop counter and double the mask
+ADDI $1, 0
+ADD 1, 1
+// Check the looping condition stops once i = 4
+CMPI $4, 0
+BNE $238
+// End Player 1 direction update
+
+// Player 2 direction update
+// do initialization for the player 2 loop. 0 is the loop counter/direction
+// 16 is the bit used to mask to check the direction pressed. Starts at 6 
+// because first you will check if up arrow is pressed to move up which is 
+// bit 4. Just Keeps doubling every iteration to form the new mask.
+MOVI $0, 0
+MOVI $16, 1
+// Move the loop counter into register 2
+MOV 2, 0
+// Xor with the players direction
+MOVI $3, 3
+AND 3, 11
+XOR 2, 3
+// If the result of the XOR was 3 then it is not a
+// valid direction to move so just skip this direction 
+// check (equivalent of a continue)
+CMPI $3, 2
+// Jump to the loop incrementation and loop check
+BEQ $10
+// Move the keys pressed into register 2
+MOV 2, 14
+// Get the bit you are interested in using the mask
+AND 2, 1
+// If the mask resulted in 0 the key is not pressed so just
+// continue the loop by jumping to the loop incrementation 
+// and loop check
+CMPI $0, 2
+BEQ $6
+// If you get to this point it is a valid direction and the
+// key is pressed so update Player 2 to be moving that direction
+// and break out of the loop
+// Create a mask to remove the old direction
+LUI $255, 2
+ADDI $252, 2
+// And it to remove the old direction
+AND 11, 2
+// Or it to add the new direction
+OR 11, 0
+BUC $5
+// Increment Loop counter and double the mask
+ADDI $1, 0
+ADD 1, 1
+// Check the looping condition stops once i = 4
+CMPI $4, 0
+BNE $238
+// End Player 2 direction update
+// END DIRECTION GETTING SCRIPT
+
+// PLAYER 1
+// Branch on direction register for a jump table.
+MOV 0, 9
+ANDI $3, 0
+LSHI $1, 0
+ADDI $1, 0
+BRUC 0
+// Jump Table, Up 00, Left 01, Right, Down
+SUB 8, 6
+BUC $6
+SUBI $1, 8
+BUC $4
+ADDI $1, 8
+BUC $2
+ADD 8, 6
+// Jump Table End Target
+
+// IF Add full table size if negative (means that it tried to go below zero)
+BGE $3
+ADD 8, 5
+BUC $4
+// ELSEIF Check if the position is over full table size, if so, subtract full table size (means went above full height)
+CMP 8, 5
+BLT $2
+SUB 8, 5
+// IFELSEIF End Target
+
+// If JumpCtr > 0, Skip the Matrix Update and Alive Check
+MOVI $112, 0
+AND 0, 9
+BNE $24
+// End If
+
+// BEGIN UPDATE MATRIX FUNCTION
+// Put the player position in register 0
+MOV 0, 8
+// And it with 7 to get the offset / 2
+ANDI $7, 0
+// Double it to get the actual offset
+LSHI $1, 0
+// Move the player position into register 1
+MOV 1, 8
+// shift it right by 3 (divide by 8) to get its memory location
+RSHI $3, 1
+// Add this to the start index to get its location in memory
+ADD 1, 15
+// Load the 16 bit value into reg 2 from memory
+LOAD 2, 1
+// Move this value into the return reg
+MOV 4, 2
+// Move 3 into reg 3
+MOVI $3, 3
+// Shift it left the correct amount of bits
+LSH 3, 0
+// AND it to get your result
+AND 4, 3
+// Move the Player into reg 3
+MOVI $1, 3
+// Shift it by the correct offset
+LSH 3, 0
+// Or it with what's currently stored in memory
+OR 2, 3
+// Store this new value back in memory
+STOR 2, 1
+// END UPDATE MATRIX FUNCTION
+
+// IF Perform CMP with 00, if NE, than set winner = p2 and jump to Menu Setup
+CMPI $0, 4
+BEQ $7
+MOVI $2, 0
+LUI $176, 1
+STOR 0, 1
+ADDI $16, 7
+MOVI $0, 1
+JUC 1
+// IF End Target
+		
+// PLAYER 2
+// Branch on direction register for a jump table.
+MOV 0, 11
+ANDI $3, 0
+LSHI $1, 0
+ADDI $1, 0
+BRUC 0
+// Jump Table, Up 00, Left 01, Right, Down
+SUB 10, 6
+BUC $6
+SUBI $1, 10
+BUC $4
+ADDI $1, 10
+BUC $2
+ADD 10, 6
+// Jump Table End Target
+
+// IF Add full table size if negative (means that it tried to go below zero)
+BGE $3
+ADD 10, 5
+BUC $4
+// ELSEIF Check if the position is over full table size, if so, subtract full table size (means went above full height)
+CMP 10, 5
+BLT $2
+SUB 10, 5
+// IFELSEIF End Target
+
+// If JumpCtr > 0, Skip the Matrix Update and Alive Check
+MOVI $112, 0
+AND 0, 11
+BNE $24
+// End If
+
+// BEGIN UPDATE MATRIX FUNCTION
+// Put the player position in register 0
+MOV 0, 10
+// And it with 7 to get the offset / 2
+ANDI $7, 0
+// Double it to get the actual offset
+LSHI $1, 0
+// Move the player position into register 1
+MOV 1, 10
+// shift it right by 3 (divide by 8) to get its memory location
+RSHI $3, 1
+// Add this to the start index to get its location in memory
+ADD 1, 15
+// Load the 16 bit value into reg 2 from memory
+LOAD 2, 1
+// Move this value into the return reg
+MOV 4, 2
+// Move 3 into reg 3
+MOVI $3, 3
+// Shift it left the correct amount of bits
+LSH 3, 0
+// AND it to get your result
+AND 4, 3
+// Move the Player into reg 3
+MOVI $2, 3
+// Shift it by the correct offset
+LSH 3, 0
+// Or it with what's currently stored in memory
+OR 2, 3
+// Store this new value back in memory
+STOR 2, 1
+// END UPDATE MATRIX FUNCTION
+
+// IF Perform CMP with 00, if NE, than set winner = p1 and jump to Menu Setup
+CMPI $0, 4
+BEQ $7
+MOVI $1, 0
+LUI $176, 1
+STOR 0, 1
+ADDI $1, 7
+MOVI $0, 1
+JUC 1
+// IF End Target
+
+// Busy Loop till when we next need to update
+// Loads X into loop register
+MOVI $8, 0
+MOVI $0, 1
+
+// Subtract 1, check if its zero. If not, loop
+SUBI $1, 1
+BNE $255
+
+// Sub to the loop of loops counter. Check if we are out yet
+SUBI $1, 0
+BNE $253
+
+// Loop to beginning of game loop
+MOVI $35, 0
+JUC 0

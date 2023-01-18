@@ -1,0 +1,13 @@
+// Menu Loop to detect the space bar being pressed 
+// Read in the Keyboard input to reg 14
+LDKEY 14
+// Load in the correct mask bit to detect space bar press
+LUI 0, $1
+// And the keys pressed with the mask to detect the press
+AND 0, 14
+// If the result is 0 the space bar is not pressed so begin 
+// the loop to detect the press again
+CMPI 0, $0
+BE $253
+// Otherwise jump the the GameSetup function
+JUC GameSetup

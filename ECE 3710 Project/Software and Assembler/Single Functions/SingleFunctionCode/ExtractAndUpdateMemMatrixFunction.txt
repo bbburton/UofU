@@ -1,0 +1,37 @@
+//Function for updating matrix in memory
+// Requires two parameters the player position must be in register 12
+// The player number (1 or 2) must be in register
+// The return value is in register 7 at the end
+
+// Put the player position in register 0
+MV 0, 12
+// And it with 7 to get the offset / 2
+ANDI 0, $7
+// Double it to get the actual offset
+ADD 0, 0
+// Move three into 1 for the and later
+MVI 1, $3
+// Shift it left by the offset
+SHL 1, 0
+// Move the player position into register 3
+MV 3, 12
+// shift it right by 3 (divide by 8) to get its memory location
+SHRI 3, $3
+// Add this to the start index to get its location in memory
+ADDI 3, 15
+// Load the 16 bit value into reg 2 from memory
+LOAD 2, 3
+// Move this value into the return reg
+MV 7, 2
+// And it with the shifted 11 value to extract the correct bits
+AND 7, 1
+// Move the Player into reg 1
+MV 1, 13
+// Shift it by the correct offset
+SHL 1, 0
+// Or it with what's currently stored in memory
+OR 2, 1
+// Store this new value back in memory
+STOR 2, 3
+// Jump to wherever it needs to return to
+JUC wherever to return
