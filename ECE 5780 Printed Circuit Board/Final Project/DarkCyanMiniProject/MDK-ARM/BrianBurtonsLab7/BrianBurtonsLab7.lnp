@@ -1,0 +1,25 @@
+--cpu Cortex-M0
+"brianburtonslab7\startup_stm32f072xb.o"
+"brianburtonslab7\main.o"
+"brianburtonslab7\stm32f0xx_it.o"
+"brianburtonslab7\stm32f0xx_hal_msp.o"
+"brianburtonslab7\stm32f0xx_hal_tim.o"
+"brianburtonslab7\stm32f0xx_hal_tim_ex.o"
+"brianburtonslab7\stm32f0xx_hal_rcc.o"
+"brianburtonslab7\stm32f0xx_hal_rcc_ex.o"
+"brianburtonslab7\stm32f0xx_hal.o"
+"brianburtonslab7\stm32f0xx_hal_i2c.o"
+"brianburtonslab7\stm32f0xx_hal_i2c_ex.o"
+"brianburtonslab7\stm32f0xx_hal_gpio.o"
+"brianburtonslab7\stm32f0xx_hal_dma.o"
+"brianburtonslab7\stm32f0xx_hal_cortex.o"
+"brianburtonslab7\stm32f0xx_hal_pwr.o"
+"brianburtonslab7\stm32f0xx_hal_pwr_ex.o"
+"brianburtonslab7\stm32f0xx_hal_flash.o"
+"brianburtonslab7\stm32f0xx_hal_flash_ex.o"
+"brianburtonslab7\stm32f0xx_hal_exti.o"
+"brianburtonslab7\system_stm32f0xx.o"
+--strict --scatter "BrianBurtonsLab7\BrianBurtonsLab7.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "BrianBurtonsLab7.map" -o BrianBurtonsLab7\BrianBurtonsLab7.axf
