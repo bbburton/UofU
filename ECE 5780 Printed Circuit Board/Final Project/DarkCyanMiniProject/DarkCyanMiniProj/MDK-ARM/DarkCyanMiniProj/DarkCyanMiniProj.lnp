@@ -1,0 +1,25 @@
+--cpu Cortex-M0
+"darkcyanminiproj\startup_stm32f072xb.o"
+"darkcyanminiproj\main.o"
+"darkcyanminiproj\stm32f0xx_it.o"
+"darkcyanminiproj\stm32f0xx_hal_msp.o"
+"darkcyanminiproj\stm32f0xx_hal_tim.o"
+"darkcyanminiproj\stm32f0xx_hal_tim_ex.o"
+"darkcyanminiproj\stm32f0xx_hal_rcc.o"
+"darkcyanminiproj\stm32f0xx_hal_rcc_ex.o"
+"darkcyanminiproj\stm32f0xx_hal.o"
+"darkcyanminiproj\stm32f0xx_hal_i2c.o"
+"darkcyanminiproj\stm32f0xx_hal_i2c_ex.o"
+"darkcyanminiproj\stm32f0xx_hal_gpio.o"
+"darkcyanminiproj\stm32f0xx_hal_dma.o"
+"darkcyanminiproj\stm32f0xx_hal_cortex.o"
+"darkcyanminiproj\stm32f0xx_hal_pwr.o"
+"darkcyanminiproj\stm32f0xx_hal_pwr_ex.o"
+"darkcyanminiproj\stm32f0xx_hal_flash.o"
+"darkcyanminiproj\stm32f0xx_hal_flash_ex.o"
+"darkcyanminiproj\stm32f0xx_hal_exti.o"
+"darkcyanminiproj\system_stm32f0xx.o"
+--strict --scatter "DarkCyanMiniProj\DarkCyanMiniProj.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list "DarkCyanMiniProj.map" -o DarkCyanMiniProj\DarkCyanMiniProj.axf
