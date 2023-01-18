@@ -1,0 +1,211 @@
+--FEBRUARY 2022--
+
+2/8/21 Group Meeting
+Start Time: 10:50
+Discussions:
+-Discussed the project idea and settled on creating a button system to emulate an XBOX controller inputs as well as developing a game
+-Talked about what materials will be needed to create the project
+-Discussed pros and cons of Unity Vs. Unreal engine and which one we should use 
+
+--Unity is a bit slower and can't do 3D games as well. 2D base environment that can be set up to 3D. Also doesn't work well with github. But it's very easy to drag and drop things that makes code and game objects. More tutorial videos online and is friendly to less knowledge. Main language is C# and sometimes compilation is wonky.
+
+--Unreal requires more professional work like knowing hitboxes and such. Better at 3D modeling. 3D environment is the base standard so any "2D games" are more like "2.5D game" b/c you have 3D assets in a 2D camera environment. Has code that generates a side-scroller. Syncs with Github very well. Has assets you can get from the Epic Games Store. Videos are more professional focused. Main language is C++.
+
+-Overall we decided to chew on the idea for a few days to pick which one
+End Time: 12:03 
+
+
+2/22/2022 Group Meeting
+Start Time: 10:45am
+Discussion:
+Overall System/Proposal:
+-Discussed having the controller be the main purpose/product of the project and the game as an additional optional goal if we have time to get to it.
+-Also decided that for the optional components we would include drivers that would allow the controller to work for Xbox, Linux, and Mac, and have Windows PC be the main system that the controller will work for.
+-Design the whole system around the concept of creating a controller for disabled people who do not have access to the use of their fingers to use a standard controller or keyboard.
+
+-Possible parts list:
+--Raspberry Pi - Find specific version of pi later, but it would be required to have multiple USB ports for input and output as well as pins of any wires we may need to connect.
+--Large buttons - Large enough for the user to hit them with their feet or wrist (Minimum of 15 for LB, RB, LT, RT, Up D-Pad, Down D-Pad, Left D-pad, Right D-Pad, A, B, X, Y, -Start, Options, and Xbox Button. Possibly 17 total with two additional buttons for Right Joystick Click and Left Joystick Click, however these can be optional).
+--Have not fully decided how we will implement the joysticks, but the current idea is: 
+--A wheel with a sensor of some sort to track the wheel's movement and direction to simulate the joystick movement while still having it be easily accessible by the user. Would need at least two of these to represent the joysticks (1 per stick).
+-An additional optional component to the controller could be an input for a headset.
+
+Optional Game:
+-Discussed the possible game engines again and decided since the game will be an optional goal, we would decide to pick which engine we would use based on the amount of time we had left to create the game if we got to that goal. Unity if we have less time and Unreal if we have more time.
+
+End Time: 12:05pm
+
+
+2/24/22 Group Meeting
+Start Time: 10:40A.M
+Discussion:
+-Group Roles for upcoming project
+-Initial Project Report Draft outline
+-Created and added all members to a LaTeX document for the project report that can be worked on by all members
+
+End Time: 11:06A.M
+
+--MARCH 2022--
+
+3/1/22 Group Meeting
+Start Time: 10:50A.M
+Discussion
+-Discussed ECE 5780 project proposal document and how we can make part of our project the final project for our course.
+-Looking into Raspberry Pi models for purchase. Goal is to order one by the end of the week. Currently looking at: https://www.amazon.com/Vilros-Raspberry-Fan-Cooled-Heatsinks-Quickstart/dp/B07TKFFCF1/ref=sr_1_2_sspa?crid=1T5QR258R2JA1&keywords=raspberry+pi+4+8gb&qid=1646157604&sprefix=raspberry%2Caps%2C182&sr=8-2-spons&psc=1&spLa=ZW5jcnlwdGVkUXVhbGlmaWVyPUE3WFFGSzgwWVFHMkQmZW5jcnlwdGVkSWQ9QTA5MDYwODkyUkJXUjhJNjgwNExHJmVuY3J5cHRlZEFkSWQ9QTA0Njg0MjkzNjM2V1dFUUVVNkJRJndpZGdldE5hbWU9c3BfYXRmJmFjdGlvbj1jbGlja1JlZGlyZWN0JmRvTm90TG9nQ2xpY2s9dHJ1ZQ==
+-Plan is everyone splits the bill, and if a raspberry pi opens up then Matt plans on ordering that for himself and money is returned. NOTE: Raspberry Pi's are VERY out of stock everywhere
+-Discussed potentially using garage door buttons instead of the ones used for pets in order to get signal inputs since finding buttons is currently a bit challenging since it may need to connect to only 4 USB ports on the Raspberry Pi or the 40 I/O pins
+-OR make our own buttons by using a tiny one then making a casing/shell around it that can be pressed down. This is likely what we will be doing
+
+-For the 5780 Project, tomorrow some group members will go to lab and try to get project approval. Will also potentially ask stockroom if they know any available Rasperry Pi sellers.
+-Started working and looking at the abstract for the 3992 Project Proposal document but not as concerned since it's due in about 2 weeks
+
+End Time: 12:11P.M
+
+
+3/3/22 Group Meeting
+Start Time: 10:45A.M
+
+Discussion
+-Discussed new 5780 Final project plan since the button mapping project was deemed not complex enough
+-Long discussion on what the timeline will be for the project. Raspberry Pi 4 has been ordered and will be shipping 1 week AFTER Spring Break. 
+-Considered that perhaps we can set pins to a high voltage value and get push buttons that toggle the connection and allows the current to flow rather than dealing with toggling signals and such for button implementation.
+-Also came up with a meeting schedule for spring break by meeting M, Tu, W at 6PM to complete project proposal and tackle and other ideas or get a head start on more documentation and such.
+-Came up with a new idea for 5780 project while trying to approve the one that matches the senior project. Still it may be a chance to play with the Raspberry Pi when it arrives and get more comfortable with programing and the hardware aspects
+
+End Time: 12:50P.M
+
+
+3/7/22 Group Meeting
+Start Time: 6:00P.M
+
+Discussion: 
+-Started planning out skeleton of the Project Proposal and what milestones we need to consider
+-Completed abstract idea and researched necessary formatting things.
+
+End Times: 7:00P.M 
+
+
+3/8/22 Group Meeting
+Start Time: 6:00P.M
+
+Discussion: 
+-Worked on the Project Proposal Document
+-Set up the github to store code and documentation
+-Added Group Meeting documentation to the Github for records
+-Worked on Bill of Materials start and created a spreadsheet for recording information
+
+End Time: 8:36P.M 
+
+
+3/9/22 Group Meeting
+Start Time: 6:00P.M
+
+Discussion:
+-Finished up the first draft of the project proposal
+-Discussed group milestone and which task will have which group lead
+
+End Time: 7:21P.M 
+
+
+3/15/22 Group Meeting
+Start Time: 10:45A.M
+
+Discussion:
+-Proofread and Editing project proposal document
+-Created the .bib file and bibliography with a single citation for a claim in the conclusion
+-Debugging bibliography display issues and got it working
+
+End Time: 12:05P.M 
+
+
+3/17/22 Group
+Start Time: 10:45A.M
+
+Discussion:
+-Learned that the intermediate project proposal is what we needed rather than the initial one
+-Turns out we ended up doing all the intermediate anyways. 
+-Compiled the necessary documents output.log, pdf, and source files and Khang submitted on Canvas
+-Also uploaded a copy to the github for record keeping
+
+End Time: 11:31A.M 
+
+
+3/22/22 
+Start Time: 10:45A.M
+
+Discussion:
+-With the intermediate proposal done, we discussed when to start working on the next part
+-Discussed how to setup the Raspberry Pi, likely thinking of installing Linux Ubuntu OS onto the chip but still need to look into some things
+
+End Time: 11:14A.M
+
+
+3/24/22
+Start Time: 10:45A.M
+
+Discussion:
+-Reviewed the feedback for the proposal
+-Meeting at 11AM with the professor on the feedback information and what can be improved/added as well as fixes and changes that need to be made
+-Afterwards discussed new plan going forward where next week we'll tackle fixing the proposal and start moving into doin the 3D printing and looking at maybe ordering buttons and making some random objects to test print
+
+End Time: 12:19P.M
+
+
+3/29/22
+Start Time: 10:45A.M
+
+Discussion/Work:
+-Worked on the project proposal
+-Talked about Microsoft's version of a gaming controller for those who are disabled and discovered that it's very similar to our proposed design
+-Sent an invite for the professor to be added to the github repository
+-Updated github repository to include Session Logs past 3/7 to current day (3/29/22)
+
+End Time: 12:04P.M
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
